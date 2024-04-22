@@ -5,17 +5,12 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 import { Breadcrumb, Layout, Menu, theme, Image } from 'antd';
 import logo from './assets/logo.jpeg';
-import items from './menu';
+import NavToolBar from "./components/navbar-right";
 
 const inter = Inter({ subsets: ["latin"] });
 
 
 const { Header, Content, Footer } = Layout;
-
-// export const metadata: Metadata = {
-//   title: "Oracle Primavera Unifier",
-//   description: "",
-// };
 
 export default function RootLayout({
   children,
@@ -32,6 +27,7 @@ export default function RootLayout({
         <AntdRegistry>
           <Layout>
             <Header
+            className="border-b"
               style={{
                 position: 'sticky',
                 top: 0,
@@ -43,16 +39,10 @@ export default function RootLayout({
               }}
             >
               <Image src={logo.src} className='demo-logo' width={150} preview={false} />
-              <Menu
-                theme="light"
-                mode="horizontal"
-                defaultSelectedKeys={['2']}
-                items={items}
-                style={{ flex: 1, minWidth: 0, flexDirection: 'row-reverse' }}
-              />
+              <NavToolBar />
             </Header>
             
-            <Content style={{ margin: '0 48px', backgroundColor: 'white' }}>
+            <Content style={{ backgroundColor: 'white' }}>
               {children}
             </Content>
             <Footer style={{ textAlign: 'center' }}>

@@ -8,7 +8,7 @@ const Page: React.FC = () => {
  
 
   return (
-    <div>page</div>  
+    <div className='min-h-96'>page</div>  
   );
 };
 
