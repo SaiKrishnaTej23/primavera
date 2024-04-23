@@ -1,8 +1,6 @@
 import { EditOutlined, PaperClipOutlined, PlusOutlined, PrinterOutlined, ReloadOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button, Space, Table, Typography } from 'antd';
-import { title } from 'process';
 import React from 'react'
-import { render } from 'react-dom';
 const dataSource: any[] = [];
 
 for (let i = 1; i <= 20; i++) {
