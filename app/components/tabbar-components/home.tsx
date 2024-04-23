@@ -1,6 +1,7 @@
 import { FileMarkdownOutlined, HomeOutlined, MailOutlined, OrderedListOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { Menu, MenuProps } from 'antd';
 import React from 'react';
+import { Drafts } from './drafts';
 
 type MenuItem = Required<MenuProps>['items'][number];
 const items: MenuItem[] = [
@@ -31,17 +32,19 @@ const items: MenuItem[] = [
     }
 ];
 
+
+
 const Home = () => {
     return (
         <div className='flex flex-row min-h-screen w-full'>
             <Menu
                 mode="inline"
-                defaultSelectedKeys={['1']}
+                defaultSelectedKeys={['4']}
                 style={{ width: 256 }}
                 items={items}
             />
             <div className='flex flex-col w-full'>
-                <h1>Home</h1>
+                <Drafts />
             </div>
         </div>
     )

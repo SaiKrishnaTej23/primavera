@@ -1,6 +1,7 @@
 import { CalculatorOutlined, CalendarOutlined, FileMarkdownOutlined, FolderOutlined, HomeOutlined, InfoCircleOutlined, InfoOutlined, MailOutlined, MoneyCollectOutlined, OrderedListOutlined, UnorderedListOutlined, UsergroupAddOutlined } from '@ant-design/icons';
-import { Menu, MenuProps } from 'antd';
+import { Menu, MenuProps, Typography } from 'antd';
 import React from 'react';
+import { Tasks } from './tasks';
 
 type MenuItem = Required<MenuProps>['items'][number];
 const items: MenuItem[] = [
@@ -100,12 +101,12 @@ export const Workspace = ({ name }: { name: string }) => {
     <div className='flex flex-row w-full min-h-screen'>
       <Menu
         mode="inline"
-        defaultSelectedKeys={['1']}
+        defaultSelectedKeys={['2']}
         style={{ width: 256 }}
         items={items}
       />
       <div className='flex flex-col w-full'>
-        <h1>{name}</h1>
+        <Tasks />
       </div>
     </div>
   )

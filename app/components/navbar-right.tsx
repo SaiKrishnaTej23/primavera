@@ -1,6 +1,6 @@
 import { BookOutlined, DownCircleFilled, DownOutlined, NotificationOutlined, QuestionCircleOutlined, SettingOutlined, UploadOutlined, UserOutlined, YoutubeOutlined } from '@ant-design/icons';
-import { Avatar, Button, Popover, Typography } from 'antd';
-import React from 'react'
+import { Avatar, Button, Popover, Tour, TourProps, Typography } from 'antd';
+import React, { useRef, useState } from 'react'
 import UserDetails from './nav-bar-components/userdetails';
 import HelpDetails from './nav-bar-components/helpdetails';
 import BookmarksDetails from './nav-bar-components/bookmarksdetails';
@@ -23,11 +23,19 @@ function NavToolBar() {
 }
 
 const UserMenu = ({ className }: { className: string }) => {
+    const youtubeRef = useRef(null);
+    const [open, setOpen] = useState<boolean>(true);
+    const steps: TourProps['steps'] = [
+        {
+          title: 'Youtube Link for Oracle Primavera Unifier',
+          description: 'This webpage is desinged in React based on the UI reference taken from the video',
+          target: () => youtubeRef.current,
+        }];
 
     return (
         <div className={className}>
             <div className='cursor-pointer px-3 hover:bg-red-100 border-l border-r'>
-                <Button type='link' target='_blank' href='https://www.youtube.com/watch?v=4eQnbnCFHVg&ab_channel=OracleLearning'  icon={<YoutubeOutlined style={{ justifyContent: 'center', fontSize: '25px' }} />}></Button>
+                <Button ref={youtubeRef} type='link' target='_blank' href='https://www.youtube.com/watch?v=4eQnbnCFHVg&ab_channel=OracleLearning'  icon={<YoutubeOutlined style={{ justifyContent: 'center', fontSize: '25px' }} />}></Button>
             </div>
             <Popover placement='bottomRight' className='min-w-0' title="Upload Status" trigger="click" content={<UploadedFiles />}>
                 <div title='Upload Status' className='cursor-pointer px-3 hover:bg-red-100 border-l border-r'>
@@ -56,6 +64,7 @@ const UserMenu = ({ className }: { className: string }) => {
                     </div>
                 </div>
             </Popover>
+            <Tour open={open} onClose={() => setOpen(false)} steps={steps} />
         </div>
     );
 }
