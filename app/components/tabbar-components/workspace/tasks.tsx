@@ -1,11 +1,14 @@
-import { EditOutlined, PlusOutlined, PrinterOutlined, ReloadOutlined, SearchOutlined } from '@ant-design/icons';
+import { EditOutlined, PaperClipOutlined, PlusOutlined, PrinterOutlined, ReloadOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button, Space, Table, Typography } from 'antd';
+import { title } from 'process';
 import React from 'react'
+import { render } from 'react-dom';
 const dataSource: any[] = [];
 
 for (let i = 1; i <= 20; i++) {
     dataSource.push({
         key: `${i}`, // Unique key for each row
+        "attachment": i % 3 == 0 || i % 5 == 0 || i % 7 == 0 ? true : false,
         "Business Process": `Process ${i}`, // Business Process
         "Record Number": `Record #${i}`,  // Record Number
         Title: `Title ${i}`,               // Title
@@ -16,6 +19,12 @@ for (let i = 1; i <= 20; i++) {
 }
 
 const columns = [
+    {
+        title: <PaperClipOutlined />,
+        dataIndex: 'attachment',
+        key: 'attachment',
+        render: (hasAttachment: boolean) => hasAttachment ? "" : <PaperClipOutlined />,
+    },
     {
         title: 'Business Process',
         dataIndex: 'Business Process',
